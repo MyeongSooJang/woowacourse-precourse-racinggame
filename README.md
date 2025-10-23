@@ -9,18 +9,18 @@
 ### 2. 자동차 이름 처리
 - [ ] 쉼표를 기준으로 자동차 이름을 구분한다.
 - [ ] 각 자동차의 앞뒤 공백을 제거한다.
-- [ ] 입력한 이름이 빈 문자열인지 검증한다.
-- [ ] 자동차 이름이 5글자를 초과했는지 검증한다.
+- [x] 입력한 이름이 빈 문자열인지 검증한다.
+- [x] 자동차 이름이 5글자를 초과했는지 검증한다.
 
 ### 3. 시도 횟수 처리
 - [ ] 입력받은 문자열을 정수로 변환한다.
 - [ ] 시도 횟수가 양의 정수인지 검증한다.
 
 ### 4. 자동차 객체(Car)
-- [ ] 자동차는 이름을 가진다.
-- [ ] 자동차는 현재 위치를 가진다.
-- [ ] 자동차는 전진할 수 있다.
-- [ ] 자동차는 현재 위치를 반환할수 있다.
+- [x] 자동차는 이름을 가진다.
+- [x] 자동차는 현재 위치를 가진다.
+- [x] 자동차는 전진할 수 있다.
+- [x] 자동차는 현재 위치를 반환할수 있다.
 
 ### 5. 무작위 숫자 생성
 - [ ] 0에서 9 사이의 무작위 숫자를 생성한다.
@@ -66,14 +66,14 @@
 | `car12` | 1대의 자동차 생성 (5자) |
 
 #### 예외 케이스
-| 입력 | 예상 결과 | 예외 메시지                         |
-|------|-----------|--------------------------------|
-| `pobi,verylongname,jun` | IllegalArgumentException (5자 초과) | `[ERROR] 자동차 이름은 5자 이하여야 합니다.` |
-| `pobi,,jun` | IllegalArgumentException (빈 이름) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.`  |
-| `pobi, ,jun` | IllegalArgumentException (공백만 있는 이름) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.`  |
-| `` | IllegalArgumentException (빈 문자열) | `[ERROR] 자동차 이름을 입력해주세요.`      |
-| `pobi,woni,jun,` | IllegalArgumentException (마지막 쉼표) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.` |
-| `,pobi,woni` | IllegalArgumentException (첫 쉼표) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.`     |
+| 입력 | 예상 결과 | 예외 메시지                               |
+|------|-----------|--------------------------------------|
+| `pobi,verylongname,jun` | IllegalArgumentException (5자 초과) | `[ERROR] 자동차 이름은 5자 이하여야 합니다.`       |
+| `pobi,,jun` | IllegalArgumentException (빈 이름) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.`       |
+| `pobi, ,jun` | IllegalArgumentException (공백만 있는 이름) | `[ERROR] 자동차 이름은 공백으로만 이루어질 수 없습니다.` |
+| `` | IllegalArgumentException (빈 문자열) | `[ERROR] 자동차 이름을 입력해주세요.`            |
+| `pobi,woni,jun,` | IllegalArgumentException (마지막 쉼표) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.`       |
+| `,pobi,woni` | IllegalArgumentException (첫 쉼표) | `[ERROR] 자동차 이름은 빈 값일 수 없습니다.`       |
 
 ### 시도 횟수 입력 테스트
 
