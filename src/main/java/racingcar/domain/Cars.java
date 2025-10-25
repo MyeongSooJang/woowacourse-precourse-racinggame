@@ -1,0 +1,26 @@
+package racingcar.domain;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Cars {
+
+    private final List<Car> cars;
+
+    public Cars(List<String> carNames) {
+        validateCarNames(carNames);
+        this.cars = carNames.stream()
+                .map(Car::new)
+                .collect(Collectors.toList());
+    }
+
+    private void validateCarNames(List<String> carNames) {
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름 리스트는 비어있을 수 없습니다.");
+        }
+    }
+
+    public int getSize() {
+        return cars.size();
+    }
+}
