@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,5 +23,15 @@ public class Cars {
 
     public int getSize() {
         return cars.size();
+    }
+
+    public void moveAll(MovingStrategy movingStrategy) {
+        for (Car car : cars) {
+            car.move(movingStrategy.canMove());
+        }
+    }
+
+    public List<Car> getCars() {
+        return new ArrayList<>(cars);
     }
 }
