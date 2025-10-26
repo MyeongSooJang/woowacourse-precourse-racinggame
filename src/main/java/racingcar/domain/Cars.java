@@ -34,4 +34,19 @@ public class Cars {
     public List<Car> getCars() {
         return new ArrayList<>(cars);
     }
+
+    public List<String> getWinners(){
+        int winnerLocation = getMaxLocation();
+        return cars.stream()
+                .filter(car-> car.getLocation() == winnerLocation)
+                .map(Car::getName)
+                .collect(Collectors.toList());
+    }
+
+    private int getMaxLocation(){
+        return cars.stream()
+                .mapToInt(Car::getLocation)
+                .max()
+                .orElse(0);
+    }
 }
