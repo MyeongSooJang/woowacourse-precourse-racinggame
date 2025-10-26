@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
     @Test
-    void 자동차_이름_리스트로_Cars_객체를_생성한다(){
+    void 자동차_이름_리스트로_Cars_객체를_생성한다() {
 
         List<String> carNames = List.of("pobi", "woni", "jun");
 
@@ -65,6 +65,33 @@ public class CarsTest {
         assertThat(result.get(0).getLocation()).isEqualTo(0);
         assertThat(result.get(1).getLocation()).isEqualTo(0);
         assertThat(result.get(2).getLocation()).isEqualTo(0);
+    }
+
+    @Test
+    @DisplayName("가장 많이 이동한 자동차가 우승자다")
+    void findSingleWinner() {
+        List<String> carNames = List.of("pobi", "woni", "jun");
+        Cars cars = new Cars(carNames);
+
+        cars.getCars().get(0).move(false);
+        cars.getCars().get(1).move(false);
+        cars.getCars().get(2).move(true);
+
+        assertThat(cars.getWinners()).containsExactly("jun");
+
+    }
+
+    @Test
+    @DisplayName("공동 우승자를 모두 찾는다")
+    void findMultipleWinners() {
+        List<String> carNames = List.of("pobi", "woni", "jun");
+        Cars cars = new Cars(carNames);
+
+        cars.getCars().get(0).move(false);
+        cars.getCars().get(1).move(true);
+        cars.getCars().get(2).move(true);
+
+        assertThat(cars.getWinners()).containsExactlyInAnyOrder("woni", "jun");
     }
 
 }
