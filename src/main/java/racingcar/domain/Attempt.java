@@ -6,8 +6,7 @@ public class Attempt {
 
     public Attempt(String input) {
         validateNotEmpty(input);
-        validateIsNumeric(input);
-        int count = Integer.parseInt(input);
+        int count = parseAttemptCount(input);
         validateRange(count);
         this.value = count;
     }
@@ -18,9 +17,9 @@ public class Attempt {
         }
     }
 
-    private void validateIsNumeric(String input) {
+    private int parseAttemptCount(String input) {
         try {
-            Integer.parseInt(input);
+            return Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 시도 횟수는 숫자여야 합니다.");
         }
