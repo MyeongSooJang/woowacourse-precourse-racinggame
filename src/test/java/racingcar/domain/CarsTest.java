@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.dto.CarStatus;
 
 public class CarsTest {
 
@@ -47,7 +48,7 @@ public class CarsTest {
 
         cars.moveAll(alwaysMove);
 
-        List<Car> result = cars.getCars();
+        List<CarStatus> result = cars.getCarStatus();
         assertThat(result.get(0).getLocation()).isEqualTo(1);
         assertThat(result.get(1).getLocation()).isEqualTo(1);
         assertThat(result.get(2).getLocation()).isEqualTo(1);
@@ -62,7 +63,7 @@ public class CarsTest {
 
         cars.moveAll(neverMove);
 
-        List<Car> result = cars.getCars();
+        List<CarStatus> result = cars.getCarStatus();
         assertThat(result.get(0).getLocation()).isEqualTo(0);
         assertThat(result.get(1).getLocation()).isEqualTo(0);
         assertThat(result.get(2).getLocation()).isEqualTo(0);
@@ -74,12 +75,18 @@ public class CarsTest {
         List<String> carNames = List.of("pobi", "woni", "jun");
         Cars cars = new Cars(carNames);
 
-        cars.getCars().get(0).move(false);
-        cars.getCars().get(1).move(false);
-        cars.getCars().get(2).move(true);
+        MovingStrategy moveThirdCarOnly = new MovingStrategy() {
+            private int callCount = 0;
+
+            @Override
+            public boolean canMove() {
+                return callCount++ == 2;
+            }
+        };
+
+        cars.moveAll(moveThirdCarOnly);
 
         assertThat(cars.getWinners()).containsExactly("jun");
-
     }
 
     @Test
@@ -88,9 +95,17 @@ public class CarsTest {
         List<String> carNames = List.of("pobi", "woni", "jun");
         Cars cars = new Cars(carNames);
 
-        cars.getCars().get(0).move(false);
-        cars.getCars().get(1).move(true);
-        cars.getCars().get(2).move(true);
+        MovingStrategy moveSecondAndThirdCar = new MovingStrategy() {
+            private int callCount = 0;
+
+            @Override
+            public boolean canMove() {
+                int index = callCount++;
+                return index == 1 || index == 2;
+            }
+        };
+
+        cars.moveAll(moveSecondAndThirdCar);
 
         assertThat(cars.getWinners()).containsExactlyInAnyOrder("woni", "jun");
     }

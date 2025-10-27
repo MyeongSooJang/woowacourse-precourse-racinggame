@@ -1,8 +1,7 @@
 package racingcar.view;
 
 import java.util.List;
-import racingcar.domain.Car;
-import racingcar.domain.Cars;
+import racingcar.dto.CarStatus;
 
 public class OutputView {
     private static final String OUTPUT_VIEW_MESSAGE = "실행 결과";
@@ -16,15 +15,15 @@ public class OutputView {
         System.out.println(OUTPUT_VIEW_MESSAGE);
     }
 
-    public void showCarStatus(List<Car> cars) {
-        for (Car car : cars) {
-            printCarStatus(car);
+    public void showCarStatus(List<CarStatus> carStatuses) {
+        for (CarStatus carStatus : carStatuses) {
+            printCarStatus(carStatus);
         }
         System.out.println();
     }
 
-    private void printCarStatus(Car car) {
-        System.out.println(car.getName() + LOCATION_FORMAT + LOCATION_SYMBOL.repeat(car.getLocation()));
+    private void printCarStatus(CarStatus carStatus) {
+        System.out.println(carStatus.getName() + LOCATION_FORMAT + LOCATION_SYMBOL.repeat(carStatus.getLocation()));
     }
 
     public void printWinners(List<String> winners) {
