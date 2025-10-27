@@ -6,9 +6,8 @@ public class CarName {
     private final String value;
 
     public CarName(String name) {
-        validateLength(name);
-        validateIsEmpty(name);
         validateIsBlank(name);
+        validateLength(name);
         this.value = name;
     }
 
@@ -24,11 +23,6 @@ public class CarName {
         }
     }
 
-    private void validateIsEmpty(String name) {
-        if (name.isEmpty()) {
-            throw new IllegalArgumentException("자동차 이름은 빈 값일 수 없습니다.");
-        }
-    }
 
     public String getValue() {
         return value;
