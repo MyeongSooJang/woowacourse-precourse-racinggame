@@ -32,9 +32,9 @@ public class Cars {
         }
     }
 
-    public List<CarStatus> getCarStatus() {
+    public List<CarStatus> getCarStatuses() {
         return cars.stream()
-                .map(car -> new CarStatus(car.getName(),car.getLocation()))
+                .map(car -> new CarStatus(car.getName(), car.getLocation()))
                 .collect(Collectors.toList());
     }
 
