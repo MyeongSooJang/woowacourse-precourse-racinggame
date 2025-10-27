@@ -10,7 +10,8 @@ import org.junit.jupiter.api.Test;
 public class CarsTest {
 
     @Test
-    void 자동차_이름_리스트로_Cars_객체를_생성한다() {
+    @DisplayName("자동차 이름을 통해 자동차가 만들어진다.")
+    void makeCarsByCarNames() {
 
         List<String> carNames = List.of("pobi", "woni", "jun");
 

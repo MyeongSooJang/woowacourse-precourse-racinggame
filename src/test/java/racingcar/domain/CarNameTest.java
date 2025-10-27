@@ -3,14 +3,12 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarNameTest {
 
     @Test
-    @DisplayName("자동차 이름이 5자 이하인 경우 정상적으로 생성이 된다.")
-    void createValidCarName() {
+    void 자동차_이름이_5자_이하인_경우_정상적으로_생성된다() {
         String input = "pobi";
 
         assertThatCode(() -> new CarName(input))
@@ -18,8 +16,7 @@ public class CarNameTest {
     }
 
     @Test
-    @DisplayName("자동차 이름이 5자 초과인 경우 예외를 발생시킨다.")
-    void createInvalidLongCarName() {
+    void 자동차_이름이_5자_초과인_경우_예외를_발생시킨다() {
         String input = "pobbii";
 
         assertThatThrownBy(() -> new CarName(input))
@@ -28,8 +25,7 @@ public class CarNameTest {
     }
 
     @Test
-    @DisplayName("자동차의 이름이 비어 있는 경우 예외를 발생시킨다.")
-    void createInvalidEmptyCarName() {
+    void 자동차_이름이_빈_문자열인_경우_예외를_발생시킨다() {
         String input = "";
 
         assertThatThrownBy(() -> new CarName(input))
@@ -38,8 +34,7 @@ public class CarNameTest {
     }
 
     @Test
-    @DisplayName("자동차의 이름이 공백으로만 이루어진 경우 예외를 발생시킨다.")
-    void createInvalidBlankCarName() {
+    void 자동차_이름이_공백으로만_이루어진_경우_예외를_발생시킨다() {
         String input = "   ";
 
         assertThatThrownBy(() -> new CarName(input))

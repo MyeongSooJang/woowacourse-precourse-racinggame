@@ -2,14 +2,12 @@ package racingcar.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
     @Test
-    @DisplayName("자동차는 이름을 가진다.")
-    void carHasName() {
+    void 자동차는_이름을_가진다() {
         String input = "pobi";
 
         Car car = new Car(input);
@@ -18,8 +16,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("자동차는 초기 위치가 0이다")
-    void carHasLocation() {
+    void 자동차는_초기_위치가_0이다() {
         String input = "pobi";
 
         Car car = new Car(input);
@@ -28,8 +25,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("전진 조건을 만족하면 위치가 1 증가한다.")
-    void carCanMove() {
+    void 전진_조건을_만족하면_위치가_1_증가한다() {
         String input = "pobi";
 
         Car car = new Car(input);
@@ -39,8 +35,7 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("전진 조건을 만족하면 위치가 변하지 않는다.")
-    void carCanReturnLocation() {
+    void 전진_조건을_만족하지_못하면_위치가_변하지_않는다() {
         String input = "pobi";
 
         Car car = new Car(input);
