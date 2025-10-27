@@ -14,7 +14,7 @@ public class InputView {
     private static final String DELIMITER = ",";
 
 
-    public List<String> readNames() {
+    public List<String> readCarNames() {
         System.out.println(CAR_NAMES_VIEW_MESSAGE);
         String input = Console.readLine();
         return parseCarNames(input);
