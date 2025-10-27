@@ -3,6 +3,7 @@ package racingcar.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import racingcar.dto.CarStatus;
 
 public class Cars {
 
@@ -31,8 +32,10 @@ public class Cars {
         }
     }
 
-    public List<Car> getCars() {
-        return new ArrayList<>(cars);
+    public List<CarStatus> getCarStatus() {
+        return cars.stream()
+                .map(car -> new CarStatus(car.getName(),car.getLocation()))
+                .collect(Collectors.toList());
     }
 
     public List<String> getWinners(){
