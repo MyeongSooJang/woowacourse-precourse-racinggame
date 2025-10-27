@@ -36,7 +36,7 @@ public class RacingGame {
         outputView.showOutput();
         for (int i = 0; i < attempt.getValue(); i++) {
             cars.moveAll(movingStrategy);
-            outputView.showCarStatus(cars.getCars());
+            outputView.showCarStatus(cars.getCarStatus());
         }
     }
 
