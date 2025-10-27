@@ -4,16 +4,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import racingcar.dto.CarStatus;
 
 public class CarsTest {
 
     @Test
-    @DisplayName("자동차 이름을 통해 자동차가 만들어진다.")
-    void makeCarsByCarNames() {
-
+    void 자동차_이름을_통해_자동차가_만들어진다() {
         List<String> carNames = List.of("pobi", "woni", "jun");
 
         Cars cars = new Cars(carNames);
@@ -40,38 +37,35 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("전략에 따라 모든 자동차를 이동시킨다")
-    void moveAll() {
+    void 전략에_따라_모든_자동차를_이동시킨다() {
         List<String> carNames = List.of("pobi", "woni", "jun");
         Cars cars = new Cars(carNames);
         MovingStrategy alwaysMove = () -> true;
 
         cars.moveAll(alwaysMove);
 
-        List<CarStatus> result = cars.getCarStatus();
+        List<CarStatus> result = cars.getCarStatuses();
         assertThat(result.get(0).getLocation()).isEqualTo(1);
         assertThat(result.get(1).getLocation()).isEqualTo(1);
         assertThat(result.get(2).getLocation()).isEqualTo(1);
     }
 
     @Test
-    @DisplayName("전략이 false를 반환하면 자동차가 이동하지 않는다")
-    void doNotMoveWhenStrategyReturnsFalse() {
+    void 전략이_false를_반환하면_자동차가_이동하지_않는다() {
         List<String> carNames = List.of("pobi", "woni", "jun");
         Cars cars = new Cars(carNames);
         MovingStrategy neverMove = () -> false;
 
         cars.moveAll(neverMove);
 
-        List<CarStatus> result = cars.getCarStatus();
+        List<CarStatus> result = cars.getCarStatuses();
         assertThat(result.get(0).getLocation()).isEqualTo(0);
         assertThat(result.get(1).getLocation()).isEqualTo(0);
         assertThat(result.get(2).getLocation()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("가장 많이 이동한 자동차가 우승자다")
-    void findSingleWinner() {
+    void 가장_많이_이동한_자동차가_우승자다() {
         List<String> carNames = List.of("pobi", "woni", "jun");
         Cars cars = new Cars(carNames);
 
@@ -90,8 +84,7 @@ public class CarsTest {
     }
 
     @Test
-    @DisplayName("공동 우승자를 모두 찾는다")
-    void findMultipleWinners() {
+    void 공동_우승자를_모두_찾는다() {
         List<String> carNames = List.of("pobi", "woni", "jun");
         Cars cars = new Cars(carNames);
 
