@@ -24,7 +24,7 @@ public class CarNameTest {
 
         assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 5자 이하여야 합니다.");
+                .hasMessageContaining("[ERROR] 자동차 이름은 5자 이하여야 합니다.");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class CarNameTest {
 
         assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 빈 값일 수 없습니다.");
+                .hasMessageContaining("[ERROR] 자동차 이름은 공백으로만 이루어질 수 없습니다.");
     }
 
     @Test
@@ -44,6 +44,6 @@ public class CarNameTest {
 
         assertThatThrownBy(() -> new CarName(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("자동차 이름은 공백으로만 이루어질 수 없습니다.");
+                .hasMessageContaining("[ERROR] 자동차 이름은 공백으로만 이루어질 수 없습니다.");
     }
 }
